@@ -3,6 +3,7 @@ class ArtWorld::CLI
   def call
     puts "Today's gallery openings from around the world:"
     list_events
+    menu
   end
   
   def list_events
@@ -18,5 +19,20 @@ class ArtWorld::CLI
    9.Gallery-Exhibition Title-Location-Medium
    10.Gallery-Exhibition Title-Location-Medium
    DOC
+  end
+  
+  def menu
+    input=nil
+    puts "Please input the exhibition number for more information, or exit."
+    input=gets.strip
+    case input
+    when "1"
+      puts "Details on exhibition 1:"
+    when "2"
+      puts "Details on exhibition 2:"
+    end
+
+        
+      
   end
 end
