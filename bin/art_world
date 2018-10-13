@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "Hello World"
+require './lib/art_world'
+
+ArtWorld::CLI.new.call
