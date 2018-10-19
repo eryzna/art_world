@@ -23,16 +23,9 @@ class ArtWorld::CLI
   
   def menu
     input=nil
-    puts "Please input the exhibition number for more information, or exit."
+    puts "Please input the exhibition number for more information, or type exit."
     input=gets.strip
-    case input
-    when "1"
-      puts "Details on exhibition 1:"
-    when "2"
-      puts "Details on exhibition 2:"
-    end
-
-        
-      
+    exhibition = ArtWorld::Exhibition#find(input.to_i)
+    #print_exhibition(exhibition)
   end
 end
