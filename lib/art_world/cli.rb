@@ -41,6 +41,7 @@ class ArtWorld::CLI
       puts "Would you like to view another exhibition? Y or N."
       input=gets.strip.downcase
       if input == "y"
+        list_events
         menu
       elsif input == "n"
         puts "Thank you for enjoying Art World!"
