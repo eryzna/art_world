@@ -2,4 +2,6 @@
 
 require './lib/art_world'
 
-ArtWorld::CLI.new.call
+#ArtWorld::CLI.new.call
+
+ArtWorld::Scraper
