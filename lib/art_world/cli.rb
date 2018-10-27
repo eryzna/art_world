@@ -1,11 +1,11 @@
 class ArtWorld::CLI
-  
+
   def call
     puts "Showing gallery openings from around the world for #{Time.now}."
     list_events
     menu
   end
-  
+
   def list_events
    puts <<-DOC
    1.Gallery-Exhibition Title-Location
@@ -20,7 +20,7 @@ class ArtWorld::CLI
    10.Gallery-Exhibition Title-Location
    DOC
   end
-  
+
   def menu
     input=nil
     #puts "Please input the exhibition number for more information, or type exit."
@@ -32,8 +32,8 @@ class ArtWorld::CLI
         puts "Thank you for enjoying Art World!"
         exit
       elsif input.to_i <=10
-        exhibition = ArtWorld::Exhibition#.find(input.to_i)
-        #print_exhibition(exhibition)
+        exhibition = ArtWorld::Exhibition.all.first#.find(input.to_i)
+        print_exhibition(exhibition)
       else
         puts "Input not recognized."
         menu
@@ -50,13 +50,13 @@ class ArtWorld::CLI
         puts "Input not recognized."
         menu
       end
-      
+
     end
   end
-  
-  #def print_exhibition(exhibition)
+
+  def print_exhibition(exhibition)
     #puts ""
-    #puts "----------- #{restaurant.name} - #{restaurant.position} -----------"
+    puts "----------- #{exhibition.gallery} - #{exhibition.title} -----------"
     #puts ""
     #puts "Location:           #{restaurant.location}"
     #puts "Head Chef:          #{restaurant.head_chef}"
@@ -69,5 +69,5 @@ class ArtWorld::CLI
     #puts ""
     #puts "#{restaurant.description}"
     #puts ""
-  #end
+  end
 end
