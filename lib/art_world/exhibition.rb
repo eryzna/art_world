@@ -1,6 +1,6 @@
 class ArtWorld::Exhibition
 
-  attr_accessor :gallery, :title, :location, :dates, :contact, :artists
+  attr_accessor :gallery, :title, :date, :location, :dates, :contact, :artists
 
   @@all= []
 
@@ -14,9 +14,10 @@ class ArtWorld::Exhibition
      #)
  end
 
-  def initialize (gallery=nil, title=nil, location=nil)
+  def initialize (gallery=nil, title=nil, date=nil, location=nil)
     @gallery=gallery
     @title=title
+    @date=date
     @location=location
     @@all<<self
   end
@@ -25,6 +26,6 @@ class ArtWorld::Exhibition
     @@all
   end
 
-  
+
 
 end

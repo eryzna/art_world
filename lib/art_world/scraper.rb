@@ -14,8 +14,8 @@ class ArtWorld::Scraper
   end
 
   def get_exhibitions
-    doc=self.get_page.css(".eventsArea")
-    binding.pry
+    doc=self.get_page.css(".eventArea")
+    #binding.pry
 
   end
 
@@ -23,17 +23,18 @@ class ArtWorld::Scraper
     self.get_exhibitions.each do |x|
       #binding.pry
       exhibition = ArtWorld::Exhibition.new
-      exhibition.title = x.css("h3").text
-      binding.pry
+      exhibition.gallery = x.css("h3.truncate").text
+      exhibition.title = x.css("p.truncate").text
+      exhibition.date = x.css("p")[1].text
+      exhibition.location= x.css("p#lblcity").text
+      #binding.pry
     end
+
   end
-      #course.schedule = post.css(".date").text
-      #course.description = post.css("p").text
-    #end
-  #end
-  #def print_courses
-  #  self.make_courses
-    #Course.all.each do |course|
+
+  def print_exhibition
+    self.make_courses
+    ArtWorld::Exhibition.all.each do |e|
   #    if course.title
   #      puts "Title: #{course.title}"
   #      puts "  Schedule: #{course.schedule}"
