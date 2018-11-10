@@ -10,31 +10,39 @@ class ArtWorld::Scraper
 
   def get_page
     Nokogiri::HTML(open("http://www.artnet.com/events/gallery-openings/"))
-    #binding.pry
   end
 
   def get_exhibitions
     doc=self.get_page.css(".eventArea")
-    #binding.pry
-
   end
 
-  def make_exhibition
-    self.get_exhibitions.each do |x|
-      #binding.pry
-      exhibition = ArtWorld::Exhibition.new
-      exhibition.gallery = x.css("h3.truncate").text
-      exhibition.title = x.css("p.truncate").text
-      exhibition.date = x.css("p")[1].text
-      exhibition.location= x.css("p#lblcity").text
-      #binding.pry
+  def make_exhibitions
+    get_exhibitions.each do |x|
+      ArtWorld::Exhibition.new_from_index(x)
     end
-
   end
+  ArtWorld::Scraper.new.make_exhibitions
+end
 
-  def print_exhibition
-    self.make_courses
-    ArtWorld::Exhibition.all.each do |e|
+
+
+
+  #def make_exhibition
+  #  self.get_exhibitions.each do |x|
+      #binding.pry
+  #    exhibition = ArtWorld::Exhibition.new
+  #    exhibition.gallery = x.css("h3.truncate").text
+    #  exhibition.title = x.css("p.truncate").text
+  #    exhibition.date = x.css("p")[1].text
+    #  exhibition.location= x.css("p#lblcity").text
+      #binding.pry
+  #  end
+
+  #end
+
+  #def print_exhibition
+  #  self.make_courses
+  #  ArtWorld::Exhibition.all.each do |e|
   #    if course.title
   #      puts "Title: #{course.title}"
   #      puts "  Schedule: #{course.schedule}"
@@ -45,6 +53,6 @@ class ArtWorld::Scraper
 
 #end
 
-ArtWorld::Scraper.new.make_exhibition
+#ArtWorld::Scraper.new.make_exhibition
 
-end
+#end
