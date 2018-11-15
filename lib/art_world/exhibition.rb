@@ -1,23 +1,33 @@
 require 'pry'
+require 'nokogiri'
+require 'open-uri'
 class ArtWorld::Exhibition
 
-  attr_accessor :gallery, :title, :date, :location, :dates, :contact, :artists
+  attr_accessor :gallery, :title, :date, :location, :dates, :contact, :artists, :url
 
   @@all= []
 
-  def self.new_from_index(x)
-    self.gallery= x.css("h3.truncate").text
-    self.title= x.css("p.truncate").text
-    self.date= x.css("p")[1].text
-    self.location= x.css("p#lblcity").text
-    self.new 
-    binding.pry
+  #def self.todays_exhibitions(x)
+  #  self.new(
+  #  x.css("h3.truncate").text,
+  #  x.css("p.truncate").text
+  #  x.css("p")[1].text
+  #  x.css
+  #  )
+  #  binding.pry
+    #ArtWorld::Scraper.new
+    #self.gallery= x.css("h3.truncate").text
+  #  self.title= x.css("p.truncate").text
+    #self.date= x.css("p")[1].text
+    #self.location= x.css("p#lblcity").text
+    #self.new
+    #binding.pry
     #  e.css("h3.truncate").text,
     #  e.css("p.truncate").text,
     #  e.css("p")[1].text,
     #  e.css("p#lblcity").text
     #  )
-  end
+  #end
 
    #self.new(
      #r.css("h2").text,
@@ -37,6 +47,10 @@ class ArtWorld::Exhibition
 
   def self.all
     @@all
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
   end
 
   #ArtWorld::Exhibition.new_from_index(x)#_from_index(x)
