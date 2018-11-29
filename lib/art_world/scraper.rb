@@ -26,39 +26,26 @@ class ArtWorld::Scraper
       exhibition.location= x.css("p#lblcity").text
       exhibition.url="http://www.artnet.com#{x.css("a").attribute("href").text}"
 
-      binding.pry #<<<<<<<<<<<<<
+      #binding.pry #<<<<<<<<<<<<<
     end
     #binding.pry
   end
 
-  #def scrape_profile
-      #exhibition = ArtWorld::Exhibition.new
-      #exhibition.gallery = x.css("h3.truncate").text
-      #exhibition.title = x.css("p.truncate").text
-      #exhibition.date = x.css("p")[1].text
-      #exhibition.location= x.css("p#lblcity").text
+  def get_profile_page
+    self.get_exhibitions.each do |r|
+      url="http://www.artnet.com#{r.css("a").attribute("href").text}"
+      doc=Nokogiri::HTML(open(url))
       #binding.pry
+    end
+  end
 
+  def test
+    uri=
+    doc=Nokogiri::HTML(open("http://www.artnet.com/galleries/raj-test/new-exhbit/"))
+    binding.pry
+  end
 
-
-#  def print_exhibitions
-  #  self.make_exhibitions
-  #  ArtWorld::Exhibition.all.each do |y|
-  #    if y.gallery
-  #      puts "Gallery: #{y.gallery}"
-  #      puts "Title: #{y.title}"
-  #      puts "Date: #{y.date}"
-  #      puts "Location: #{y.location}"
-  #      binding.pry
-  #    end
-  #  end
-  #end
-
-#  binding.pry
-    #  end
-    #end
-#  end
-  ArtWorld::Scraper.new.make_exhibitions
+  ArtWorld::Scraper.new.test
 end
 
 

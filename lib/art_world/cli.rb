@@ -62,16 +62,11 @@ class ArtWorld::CLI
     #puts ""
     puts "----------- #{exhibition.gallery} - #{exhibition.title} -----------"
     puts ""
-    #puts "Location:           #{restaurant.location}"
-    #puts "Head Chef:          #{restaurant.head_chef}"
-    #puts "Style of Food:      #{restaurant.food_style}"
-    #puts "Standout Dish:      #{restaurant.best_dish}"
-    #puts "Contact:            #{restaurant.contact}"
-    #puts "Website:            #{restaurant.website_url}"
+    puts "Url:           #{exhibition.url}"
     #puts ""
     #puts "---------------Description--------------"
     #puts ""
-    #puts "#{restaurant.description}"
+    #puts "#{exhibition.description}"
     #puts ""
   end
 end
