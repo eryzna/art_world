@@ -7,6 +7,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
+
 module ArtWorld
   # Your code goes here...
 end

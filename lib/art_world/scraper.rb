@@ -1,6 +1,9 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+#require 'mechanize'
+#require 'watir'
+
 
 require_relative './exhibition.rb'
 
@@ -26,29 +29,43 @@ class ArtWorld::Scraper
       exhibition.location= x.css("p#lblcity").text
       exhibition.url="http://www.artnet.com#{x.css("a").attribute("href").text}"
 
-      #binding.pry #<<<<<<<<<<<<<
+    #  binding.pry #<<<<<<<<<<<<<
     end
     #binding.pry
   end
 
-  def get_profile_page
-    self.get_exhibitions.each do |r|
-      url="http://www.artnet.com#{r.css("a").attribute("href").text}"
-      doc=Nokogiri::HTML(open(url))
+  #def get_profile_page
+  #  self.get_exhibitions.each do |r|
+    #  url="http://www.artnet.com#{r.css("a").attribute("href").text}"
+  #    doc=Nokogiri::HTML(open(url))
       #binding.pry
-    end
-  end
+  #  end
+  #end
 
-  def test
-    uri=
-    doc=Nokogiri::HTML(open("http://www.artnet.com/galleries/raj-test/new-exhbit/"))
-    binding.pry
-  end
+  #def test
+  #  doc=Nokogiri::HTML(open("http://www.artnet.com/galleries/raj-test/new-exhbit/"))
+    #binding.pry
+  #end
 
-  ArtWorld::Scraper.new.test
+  #def test_two
+  #  agent=Mechanize.new
+  #  page=agent.get("http://www.artnet.com/galleries/raj-test/new-exhbit/")
+  #  html_page=page.css('.sc-dEoRIm gHtCDK sc-dliRfk bPLQvz sc-caSCKo bAtmel')
+
+    #scraped=Nokogiri::HTML(open(page))
+    #binding.pry
+  #end
+
+  #def test_three
+  #  browser = Watir::Browser.new
+  #  browser.goto('http://stackoverflow.com/')
+  #  binding.pry
+  #  puts browser.title
+  #  browser.close
+  #end
+
+  ArtWorld::Scraper.new.make_exhibitions
 end
-
-
 #end
 
 #ArtWorld::Scraper.new.print_courses
