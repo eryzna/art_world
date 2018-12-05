@@ -12,24 +12,26 @@ class ArtWorld::Scraper
   #attr_accessor :doc
 
   def get_page
-    Nokogiri::HTML(open("http://www.artnet.com/events/gallery-openings/"))
+    Nokogiri::HTML(open("https://frieze.com/on-view?field_location_city_mask=All&field_date_value=2&recommended=All"))
   end
 
   def get_exhibitions
-    doc=self.get_page.css(".eventArea")
+    self.get_page.css(".view-content").children.css("div")
   end
 
 
   def make_exhibitions
     self.get_exhibitions.each do |x|
       exhibition = ArtWorld::Exhibition.new
-      exhibition.gallery = x.css("h3.truncate").text
-      exhibition.title = x.css("p.truncate").text
-      exhibition.date = x.css("p")[1].text
-      exhibition.location= x.css("p#lblcity").text
-      exhibition.url="http://www.artnet.com#{x.css("a").attribute("href").text}"
+      exhibition.gallery = x.css("a")[2].text
+      exhibition.title = x.css("a")[1].text
+      exhibition.location = x.css("h4")[0].text
+      date_start=x.css(".date-display-start")[0].text
+      date_end=x.css(".date-display-end")[0].text
+      exhibition.dates= "#{date_start} - #{date_end}"
+      #exhibition.url="http://www.artnet.com#{x.css("a").attribute("href").text}"
 
-    #  binding.pry #<<<<<<<<<<<<<
+      #binding.pry #<<<<<<<<<<<<<
     end
     #binding.pry
   end
@@ -42,27 +44,6 @@ class ArtWorld::Scraper
   #  end
   #end
 
-  #def test
-  #  doc=Nokogiri::HTML(open("http://www.artnet.com/galleries/raj-test/new-exhbit/"))
-    #binding.pry
-  #end
-
-  #def test_two
-  #  agent=Mechanize.new
-  #  page=agent.get("http://www.artnet.com/galleries/raj-test/new-exhbit/")
-  #  html_page=page.css('.sc-dEoRIm gHtCDK sc-dliRfk bPLQvz sc-caSCKo bAtmel')
-
-    #scraped=Nokogiri::HTML(open(page))
-    #binding.pry
-  #end
-
-  #def test_three
-  #  browser = Watir::Browser.new
-  #  browser.goto('http://stackoverflow.com/')
-  #  binding.pry
-  #  puts browser.title
-  #  browser.close
-  #end
 
   ArtWorld::Scraper.new.make_exhibitions
 end

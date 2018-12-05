@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 class ArtWorld::Exhibition
 
-  attr_accessor :gallery, :title, :date, :location, :dates, :contact, :artists, :url
+  attr_accessor :gallery, :title, :location, :dates, :contact, :artists, :url
 
   @@all= []
 
@@ -37,10 +37,10 @@ class ArtWorld::Exhibition
      #)
 
 
-  def initialize (gallery=nil, title=nil, date=nil, location=nil)
+  def initialize (gallery=nil, title=nil, dates=nil, location=nil)
     @gallery=gallery
     @title=title
-    @date=date
+    @dates=dates
     @location=location
     @@all<<self
   end
