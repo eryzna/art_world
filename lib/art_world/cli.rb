@@ -15,28 +15,22 @@ class ArtWorld::CLI
     puts "4. #{exhibition[3].gallery}---#{exhibition[3].title}---#{exhibition[3].dates}---#{exhibition[3].location}"
     puts "5. #{exhibition[4].gallery}---#{exhibition[4].title}---#{exhibition[4].dates}---#{exhibition[4].location}"
     puts "6. #{exhibition[5].gallery}---#{exhibition[5].title}---#{exhibition[5].dates}---#{exhibition[5].location}"
-    puts "7. #{exhibition[6].gallery}---#{exhibition[6].title}---#{exhibition[6].dates}---#{exhibition[6].location}" 
-    puts "8. #{exhibition[7].gallery}---#{exhibition[7].title}---#{exhibition[7].dates}---#{exhibition[7].location}" 
-    puts "9. #{exhibition[8].gallery}---#{exhibition[8].title}---#{exhibition[8].dates}---#{exhibition[8].location}" 
-    puts "10. #{exhibition[9].gallery}---#{exhibition[9].title}---#{exhibition[9].dates}---#{exhibition[9].location}" 
-
-    #binding.pry
-    #puts "1."
-
+    puts "7. #{exhibition[6].gallery}---#{exhibition[6].title}---#{exhibition[6].dates}---#{exhibition[6].location}"
+    puts "8. #{exhibition[7].gallery}---#{exhibition[7].title}---#{exhibition[7].dates}---#{exhibition[7].location}"
+    puts "9. #{exhibition[8].gallery}---#{exhibition[8].title}---#{exhibition[8].dates}---#{exhibition[8].location}"
+    puts "10. #{exhibition[9].gallery}---#{exhibition[9].title}---#{exhibition[9].dates}---#{exhibition[9].location}"
   end
 
   def menu
     input=nil
-    #puts "Please input the exhibition number for more information, or type exit."
-    #input=gets.strip
-    while input != "exit" #&& input.to_i <= 10
+    while input != "exit"
       puts "Please input the exhibition number for more information, or type exit."
       input=gets.strip
       if input == "exit"
         puts "Thank you for enjoying Art World!"
         exit
       elsif input.to_i > 0
-        y=ArtWorld::Exhibition.all[input.to_i-1] ###works!!! DON"T TOUCH!
+        y=ArtWorld::Exhibition.all[input.to_i-1]
         print_exhibition(y)
       else
         puts "Input not recognized."
@@ -59,16 +53,18 @@ class ArtWorld::CLI
   end
 
   def print_exhibition(exhibition)
-    #puts ""
-    puts "----------- #{exhibition.gallery} - #{exhibition.title} -----------"
+    puts ""
+    puts "Gallery:                    #{exhibition.gallery}"
+    puts ""
+    puts "Exhibition Title:           #{exhibition.title}"
     puts ""
     puts "Exhibition Dates:           #{exhibition.dates}"
     puts ""
     puts "Gallery Address:            #{exhibition.address}"
     puts ""
-    puts "Url: #{exhibition.url}"
-    #puts "Gallery Contact:            #{exhibition.contact}"
-    #puts ""
-    #puts "Gallery Website:            #{exhibition.gallery_website}"
+    puts "Gallery Contact:            #{exhibition.telephone}"
+    puts "                            #{exhibition.email}"
+    puts "                            #{exhibition.gallery_website}"
+    puts ""
   end
 end
