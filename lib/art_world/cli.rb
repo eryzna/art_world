@@ -1,4 +1,3 @@
-require 'pry'
 class ArtWorld::CLI
 
   def call
@@ -29,7 +28,7 @@ class ArtWorld::CLI
       if input == "exit"
         puts "Thank you for enjoying Art World!"
         exit
-      elsif input.to_i > 0
+      elsif input.to_i < 11
         y=ArtWorld::Exhibition.all[input.to_i-1]
         print_exhibition(y)
       else
