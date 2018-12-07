@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'eryzna@gmail.com'"]
 
   spec.summary       = "Art Around the World"
-  spec.description   = "Provides a list and details of the day's art openings from around the world."
+  spec.description   = "Provides a list and details of art openings from around the world."
   spec.homepage      = "https://github.com/eryzna/art_world"
   spec.license       = "MIT"
 

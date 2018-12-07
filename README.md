@@ -1,9 +1,9 @@
-Welcome to ArtWorld!
 # ArtWorld
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/art_world`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Art World!
 
-TODO: Delete this and the text above, and describe your gem
+Art World is a CLI gem that allows users to explore art exhibitions opening soon around the world.
+
 
 ## Installation
 
@@ -23,7 +23,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the following and following prompt instructions:
+
+    $ ./bin/art_world
 
 ## Development
 
@@ -39,6 +41,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/'eryzn
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
 
 Everyone interacting in the ArtWorld project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'eryzna'/art_world/blob/master/CODE_OF_CONDUCT.md).
