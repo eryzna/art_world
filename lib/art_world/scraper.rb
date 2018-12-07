@@ -16,35 +16,41 @@ class ArtWorld::Scraper
   end
 
   def get_exhibitions
-    self.get_page.css(".view-content").children.css("div")
+    doc=self.get_page.css(".views-row")
   end
 
 
   def make_exhibitions
     self.get_exhibitions.each do |x|
       exhibition = ArtWorld::Exhibition.new
-      exhibition.gallery = x.css("a")[2].text
-      exhibition.title = x.css("a")[1].text
-      exhibition.location = x.css("h4")[0].text
-      date_start=x.css(".date-display-start")[0].text
-      date_end=x.css(".date-display-end")[0].text
-      exhibition.dates= "#{date_start} - #{date_end}"
-      #exhibition.url="http://www.artnet.com#{x.css("a").attribute("href").text}"
-
-      #binding.pry #<<<<<<<<<<<<<
+      exhibition.gallery = x.css("a")[2].text 
+      exhibition.title = x.css("a")[1].text 
+      exhibition.location = x.css("h4")[0].text 
+      date_start=x.css(".date-display-start")[0].text 
+      date_end=x.css(".date-display-end")[0].text 
+      exhibition.dates= "#{date_start} - #{date_end}" 
+      exhibition.url="https://frieze.com#{x.css("a")[2].attribute("href").value}"
+      #self.get_profile_page(url)
     end
     #binding.pry
   end
 
-  #def get_profile_page
-  #  self.get_exhibitions.each do |r|
-    #  url="http://www.artnet.com#{r.css("a").attribute("href").text}"
-  #    doc=Nokogiri::HTML(open(url))
-      #binding.pry
-  #  end
+  #def get_profile_page(url)
+  #  doc=Nokogiri::HTML(open(url))
+  #  page=doc.css(".group-right").css(".adr span")
+  #  #street=page.children[0].text
+  #  street=page.children[1].text
+  #  postal_code=page.children[2].text
+  #  locality=page.children[3].text.strip
+  #  address="#{street}, #{postal_code} #{locality}"
+  #  telephone=
+  #  
+  #  binding.pry
   #end
-
-
+   #self.get_exhibitions.each do |r|
+     #url="https://frieze.com#{r.css("a")[1].attribute("href").value}"
+     
+     
   ArtWorld::Scraper.new.make_exhibitions
 end
 #end

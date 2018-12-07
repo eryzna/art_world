@@ -2,23 +2,23 @@ require 'pry'
 class ArtWorld::CLI
 
   def call
-    puts "Showing gallery openings from around the world for #{Time.now}."
+    puts "Showing gallery exhibitions opening soon around the world:"
     list_events
     menu
   end
 
   def list_events
     exhibition=ArtWorld::Exhibition.all
-    puts "1. #{exhibition[0].gallery}---#{exhibition[0].title}---#{exhibition[0].date}---#{exhibition[0].location}"
-    puts "2. #{exhibition[1].gallery}---#{exhibition[1].title}---#{exhibition[1].date}---#{exhibition[1].location}"
-    puts "3. #{exhibition[2].gallery}---#{exhibition[2].title}---#{exhibition[2].date}---#{exhibition[2].location}"
-    puts "4. #{exhibition[3].gallery}---#{exhibition[3].title}---#{exhibition[3].date}---#{exhibition[3].location}"
-    puts "5. #{exhibition[4].gallery}---#{exhibition[4].title}---#{exhibition[4].date}---#{exhibition[4].location}"
-    puts "6. #{exhibition[5].gallery}---#{exhibition[5].title}---#{exhibition[5].date}---#{exhibition[5].location}"
-    puts "7. #{exhibition[6].gallery}---#{exhibition[6].title}---#{exhibition[6].date}---#{exhibition[6].location}"
-    puts "8. #{exhibition[7].gallery}---#{exhibition[7].title}---#{exhibition[7].date}---#{exhibition[7].location}"
-    puts "9. #{exhibition[8].gallery}---#{exhibition[8].title}---#{exhibition[8].date}---#{exhibition[8].location}"
-    puts "10. #{exhibition[9].gallery}---#{exhibition[9].title}---#{exhibition[9].date}---#{exhibition[9].location}"
+    puts "1. #{exhibition[0].gallery}---#{exhibition[0].title}---#{exhibition[0].dates}---#{exhibition[0].location}"
+    puts "2. #{exhibition[1].gallery}---#{exhibition[1].title}---#{exhibition[1].dates}---#{exhibition[1].location}"
+    puts "3. #{exhibition[2].gallery}---#{exhibition[2].title}---#{exhibition[2].dates}---#{exhibition[2].location}"
+    puts "4. #{exhibition[3].gallery}---#{exhibition[3].title}---#{exhibition[3].dates}---#{exhibition[3].location}"
+    puts "5. #{exhibition[4].gallery}---#{exhibition[4].title}---#{exhibition[4].dates}---#{exhibition[4].location}"
+    puts "6. #{exhibition[5].gallery}---#{exhibition[5].title}---#{exhibition[5].dates}---#{exhibition[5].location}"
+    puts "7. #{exhibition[6].gallery}---#{exhibition[6].title}---#{exhibition[6].dates}---#{exhibition[6].location}" 
+    puts "8. #{exhibition[7].gallery}---#{exhibition[7].title}---#{exhibition[7].dates}---#{exhibition[7].location}" 
+    puts "9. #{exhibition[8].gallery}---#{exhibition[8].title}---#{exhibition[8].dates}---#{exhibition[8].location}" 
+    puts "10. #{exhibition[9].gallery}---#{exhibition[9].title}---#{exhibition[9].dates}---#{exhibition[9].location}" 
 
     #binding.pry
     #puts "1."
@@ -62,11 +62,13 @@ class ArtWorld::CLI
     #puts ""
     puts "----------- #{exhibition.gallery} - #{exhibition.title} -----------"
     puts ""
-    puts "Url:           #{exhibition.url}"
+    puts "Exhibition Dates:           #{exhibition.dates}"
+    puts ""
+    puts "Gallery Address:            #{exhibition.address}"
+    puts ""
+    puts "Url: #{exhibition.url}"
+    #puts "Gallery Contact:            #{exhibition.contact}"
     #puts ""
-    #puts "---------------Description--------------"
-    #puts ""
-    #puts "#{exhibition.description}"
-    #puts ""
+    #puts "Gallery Website:            #{exhibition.gallery_website}"
   end
 end
