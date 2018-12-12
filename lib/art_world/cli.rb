@@ -28,7 +28,7 @@ class ArtWorld::CLI
       if input == "exit"
         puts "Thank you for enjoying Art World!"
         exit
-      elsif input.to_i < 11
+      elsif input.to_i < 11 && input.to_i > 0
         y=ArtWorld::Exhibition.all[input.to_i-1]
         print_exhibition(y)
       else

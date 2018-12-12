@@ -39,8 +39,7 @@ class ArtWorld::Exhibition
   end
 
   def gallery_website
-    page=doc.css(".group-right").css("a")
-    @gallery_website=page[2].attribute("href").value
+    @gallery_website=doc.css(".group-right a.button").attribute("href").value
   end
 
   def doc
