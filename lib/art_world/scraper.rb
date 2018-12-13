@@ -22,7 +22,7 @@ class ArtWorld::Scraper
       exhibition.location = x.css("h4")[0].text
       date_start=x.css(".date-display-start").children.text
       date_end=x.css(".date-display-end").children.text
-      exhibition.dates= "#{date_start} - #{date_end}"
+      exhibition.dates= "#{date_start}-#{date_end}"
       exhibition.url="https://frieze.com#{x.css("a")[2].attribute("href").value}"
     end
   end
