@@ -6,8 +6,17 @@ require_relative './exhibition.rb'
 
 class ArtWorld::Scraper
 
+  
+  #def get_html
+  #  html = URI.open("https://frieze.com/on-view?field_location_city_mask=All&field_date_value=2&recommended=All")
+  #  binding.pry
+  #end
+
   def get_page
-    Nokogiri::HTML(open("https://frieze.com/on-view?field_location_city_mask=All&field_date_value=2&recommended=All"))
+    html = URI.open("https://frieze.com/on-view?field_location_city_mask=All&field_date_value=2&recommended=All")
+    #Nokogiri::HTML(open("https://frieze.com/on-view?field_location_city_mask=All&field_date_value=2&recommended=All"))
+
+    binding.pry
   end
 
   def get_exhibitions
@@ -27,5 +36,6 @@ class ArtWorld::Scraper
     end
   end
 
-  ArtWorld::Scraper.new.make_exhibitions
+  #ArtWorld::Scraper.new.make_exhibitions
+  ArtWorld::Scraper.new.get_page
 end
